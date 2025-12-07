@@ -9,6 +9,8 @@ import BeClubManager from "../pages/BeClubManagerPage/BeClubManager";
 import PrivateRoute from "./PrivateRoute";
 import DashboardLayout from "../Layouts/DashboardLayout";
 import UsersManagement from "../pages/Dashboard/UsersManagement/UsersManagement";
+import MyClubs from "../pages/Dashboard/MyClubs/MyClubs";
+import ManageClubs from "../pages/Dashboard/ManageClubs/ManageClubs";
 
 
 const router = createBrowserRouter([
@@ -49,6 +51,14 @@ const router = createBrowserRouter([
       {
         path:'users-management',
         element: <UsersManagement></UsersManagement>
+      },
+      {
+        path: 'my-clubs',
+        element: <MyClubs></MyClubs>
+      },
+      {
+        path: 'manage-clubs',
+        element: <ManageClubs></ManageClubs>
       }
     ]
   }

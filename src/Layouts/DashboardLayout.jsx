@@ -6,11 +6,11 @@ import useRole from '../hooks/useRole';
 import { MdEvent } from "react-icons/md";
 import { GiArchiveRegister } from "react-icons/gi";
 import { SiGoogletagmanager, SiKhanacademy } from 'react-icons/si';
-import useAuth from '../hooks/useAuth';
+// import useAuth from '../hooks/useAuth';
 
 const DashboardLayout = () => {
     const { role } = useRole();
-    const { user } = useAuth()
+    // const { user } = useAuth()
     return (
         <div className="drawer lg:drawer-open w-full mx-auto ">
             <input id="my-drawer-4" type="checkbox" className="drawer-toggle" />
@@ -22,8 +22,8 @@ const DashboardLayout = () => {
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" strokeLinejoin="round" strokeLinecap="round" strokeWidth="2" fill="none" stroke="currentColor" className="my-1.5 inline-block size-4"><path d="M4 4m0 2a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2z"></path><path d="M9 4v16"></path><path d="M14 10l2 2l-2 2"></path></svg>
                     </label>
                     <div className="px-4">ClubSphere Shift Dashboard</div>
-                    <h1 className='mr-5'>Name:{user.displayName}</h1>
-                    <h1>Email:{user.email}</h1>
+                    {/* <h1 className='mr-5'>Name:{user.displayName}</h1>
+                    <h1>Email:{user.email}</h1> */}
                 </nav>
                 {/* Page content here */}
                 <Outlet></Outlet>
@@ -63,9 +63,9 @@ const DashboardLayout = () => {
                         {
                             role === 'clubManager' && <>
                                 <li>
-                                    <NavLink className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="My Club" to="/dashboard/my-club">
+                                    <NavLink className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="My Clubs" to="/dashboard/my-clubs">
                                         <SiKhanacademy />
-                                        <span className="is-drawer-close:hidden">My Club</span>
+                                        <span className="is-drawer-close:hidden">My Clubs</span>
                                     </NavLink>
                                 </li>
                                 <li>
@@ -100,7 +100,7 @@ const DashboardLayout = () => {
                                     </NavLink>
                                 </li>
                                 <li>
-                                    <NavLink className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Manage Clubs" to="/dashboard/assign-riders">
+                                    <NavLink className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Manage Clubs" to="/dashboard/manage-clubs">
                                         <SiGoogletagmanager />
                                         <span className="is-drawer-close:hidden">Manage Clubs</span>
                                     </NavLink>

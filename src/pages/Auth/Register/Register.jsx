@@ -4,12 +4,22 @@ import { Link, useNavigate } from 'react-router';
 import SocialLogin from '../SocialLogin/SocialLogin';
 import useAuth from '../../../Hooks/useAuth';
 import useAxiosSecure from '../../../Hooks/useAxiosSecure';
+import { toast } from 'react-toastify';
 
 const Register = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
     const { createUser, updateUser } = useAuth();
     const navigate = useNavigate();
     const axiosSecure = useAxiosSecure()
+
+    const errorMessages = {
+        'auth/email-already-in-use': 'This email is already registered!',
+        'auth/invalid-email': 'Please enter a valid email address.',
+        'auth/weak-password': 'Your password is too weak — use 6+ characters.',
+        'auth/network-request-failed': 'Network error. Please check your internet connection.',
+        'auth/missing-password': 'Please enter your password.',
+        'default': 'Something went wrong. Please try again.'
+    };
 
     const handleRegistration = (data) => {
         console.log(data)
@@ -36,10 +46,14 @@ const Register = () => {
 
                 updateUser(userProfile)
                     .then(() => {
-                        // console.log('user profile updated done.')
+                        toast.success('SignUp successfully')
                         navigate(location.state || '/');
                     })
                     .catch(error => console.log(error))
+            })
+            .catch(error => {
+                const message = errorMessages[error.code] || errorMessages.default;
+                toast.error(message);
             })
     }
 
