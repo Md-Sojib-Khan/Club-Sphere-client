@@ -3,7 +3,7 @@ import { CiDeliveryTruck } from 'react-icons/ci';
 import { FaRegCreditCard, FaTasks, FaUsers, FaUsersCog } from 'react-icons/fa';
 import { Link, NavLink, Outlet } from 'react-router';
 import useRole from '../hooks/useRole';
-import { MdEvent } from "react-icons/md";
+import { MdCardMembership, MdEvent } from "react-icons/md";
 import { GiArchiveRegister } from "react-icons/gi";
 import { SiGoogletagmanager, SiKhanacademy } from 'react-icons/si';
 // import useAuth from '../hooks/useAuth';
@@ -47,19 +47,24 @@ const DashboardLayout = () => {
                             </Link>
                         </li>
 
-                        {/* our dashboard links */}
-                        <li>
-                            <NavLink className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="MyParcels" to="/dashboard/my-parcels">
-                                <CiDeliveryTruck />
-                                <span className="is-drawer-close:hidden">My Parcels</span>
-                            </NavLink>
-                        </li>
-                        <li>
-                            <NavLink className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Payment History" to="/dashboard/payment-history">
-                                <FaRegCreditCard />
-                                <span className="is-drawer-close:hidden">Payment History</span>
-                            </NavLink>
-                        </li>
+                        {
+                            role === 'member' && <>
+
+                                {/* our dashboard links */}
+                                <li>
+                                    <NavLink className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="My Memberships" to="/dashboard/my-memberships">
+                                        <MdCardMembership />
+                                        <span className="is-drawer-close:hidden">My Memberships</span>
+                                    </NavLink>
+                                </li>
+                                <li>
+                                    <NavLink className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Payment History" to="/dashboard/payment-history">
+                                        <FaRegCreditCard />
+                                        <span className="is-drawer-close:hidden">Payment History</span>
+                                    </NavLink>
+                                </li>
+                            </>
+                        }
                         {
                             role === 'clubManager' && <>
                                 <li>

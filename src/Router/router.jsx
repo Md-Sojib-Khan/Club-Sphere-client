@@ -13,6 +13,8 @@ import MyClubs from "../pages/Dashboard/MyClubs/MyClubs";
 import ManageClubs from "../pages/Dashboard/ManageClubs/ManageClubs";
 import EventsManagement from "../pages/Dashboard/EventsManagement/EventsManagement";
 import ClubDetails from "../pages/ClubDetailsPage/ClubDetails";
+import MyMemberships from "../pages/Dashboard/MyMemberships/MyMemberships";
+import PaymentSuccess from "../pages/PaymentSuccess/PaymentSuccess";
 
 
 const router = createBrowserRouter([
@@ -47,6 +49,10 @@ const router = createBrowserRouter([
         {
           path: '/be-club-manager',
           Component: BeClubManager
+        },
+        {
+          path: '/payment-success',
+          Component: PaymentSuccess
         }
     ]
   },
@@ -69,6 +75,10 @@ const router = createBrowserRouter([
       {
         path: 'event-management',
         element: <EventsManagement></EventsManagement>
+      },
+      {
+        path: 'my-memberships',
+        element: <MyMemberships></MyMemberships>
       }
     ]
   }
