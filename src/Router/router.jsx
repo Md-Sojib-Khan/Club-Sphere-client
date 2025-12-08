@@ -11,6 +11,7 @@ import DashboardLayout from "../Layouts/DashboardLayout";
 import UsersManagement from "../pages/Dashboard/UsersManagement/UsersManagement";
 import MyClubs from "../pages/Dashboard/MyClubs/MyClubs";
 import ManageClubs from "../pages/Dashboard/ManageClubs/ManageClubs";
+import EventsManagement from "../pages/Dashboard/EventsManagement/EventsManagement";
 
 
 const router = createBrowserRouter([
@@ -59,6 +60,10 @@ const router = createBrowserRouter([
       {
         path: 'manage-clubs',
         element: <ManageClubs></ManageClubs>
+      },
+      {
+        path: 'event-management',
+        element: <EventsManagement></EventsManagement>
       }
     ]
   }
