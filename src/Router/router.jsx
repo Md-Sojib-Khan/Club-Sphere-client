@@ -12,6 +12,7 @@ import UsersManagement from "../pages/Dashboard/UsersManagement/UsersManagement"
 import MyClubs from "../pages/Dashboard/MyClubs/MyClubs";
 import ManageClubs from "../pages/Dashboard/ManageClubs/ManageClubs";
 import EventsManagement from "../pages/Dashboard/EventsManagement/EventsManagement";
+import ClubDetails from "../pages/ClubDetailsPage/ClubDetails";
 
 
 const router = createBrowserRouter([
@@ -34,6 +35,10 @@ const router = createBrowserRouter([
         {
           path: '/all-clubs',
           Component: AllClubsPage
+        },
+        {
+          path: '/clubs/:id',
+          Component: ClubDetails
         },
         {
           path: '/all-events',
