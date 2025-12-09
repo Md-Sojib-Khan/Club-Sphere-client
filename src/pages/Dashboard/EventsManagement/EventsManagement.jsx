@@ -345,24 +345,20 @@ const EventsManagement = () => {
                                     </div>
                                 </div>
                                 
-                                {/* Max Attendees */}
+                                {/*Event Image URL*/}
                                 <div className="form-control">
                                     <label className="label">
-                                        <span className="label-text font-semibold">Max Attendees</span>
-                                    </label>
-                                    <input
-                                        type="number"
-                                        {...register("maxAttendees", { 
-                                            min: { value: 0, message: "Must be 0 or greater" }
-                                        })}
-                                        className="input input-bordered w-full"
-                                        placeholder="0 for unlimited"
-                                        min="0"
-                                    />
-                                    {errors.maxAttendees && (
+                                    <span className="label-text font-semibold">Event Image URL</span>
+                                </label>
+                                <input
+                                    type="text"
+                                    {...register("eventImage")}
+                                    placeholder='https://example.com/image.jpg'
+                                    className="input input-bordered w-full"
+                                />
+                                    {/* {errors.maxAttendees && (
                                         <span className="text-red-500 text-sm">{errors.maxAttendees.message}</span>
-                                    )}
-                                    <p className="text-xs text-gray-500 mt-1">0 = Unlimited attendees</p>
+                                    )} */}
                                 </div>
                                 
                                 {/* Modal Actions */}

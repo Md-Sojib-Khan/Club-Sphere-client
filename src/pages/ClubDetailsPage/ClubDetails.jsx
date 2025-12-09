@@ -5,6 +5,7 @@ import { FaArrowLeft } from 'react-icons/fa';
 import Swal from 'sweetalert2';
 import useAxiosSecure from '../../hooks/useAxiosSecure';
 import useAuth from '../../hooks/useAuth';
+import Loading from '../../Components/Loading';
 
 const ClubDetails = () => {
     const { id } = useParams();
@@ -100,18 +101,14 @@ const ClubDetails = () => {
     };
 
     if (isLoading) {
-        return (
-            <div className="flex justify-center items-center min-h-[400px]">
-                <div className="loading loading-spinner loading-lg"></div>
-            </div>
-        );
+        return <Loading></Loading> ;
     }
 
     if (!club) {
         return (
             <div className="text-center py-12">
                 <h2 className="text-2xl font-bold mb-4">Club Not Found</h2>
-                <button onClick={() => navigate('/clubs')} className="btn btn-primary">
+                <button onClick={() => navigate('/all-clubs')} className="btn btn-primary">
                     Back to Clubs
                 </button>
             </div>
@@ -122,7 +119,7 @@ const ClubDetails = () => {
 
     return (
         <div className="container mx-auto px-4 py-8">
-            <button onClick={() => navigate('/clubs')} className="btn btn-outline mb-6">
+            <button onClick={() => navigate('/all-clubs')} className="btn btn-outline mb-6">
                 <FaArrowLeft /> Back
             </button>
 

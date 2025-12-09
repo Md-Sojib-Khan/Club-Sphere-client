@@ -37,6 +37,7 @@ const ManageClubs = () => {
             return axiosSecure.patch(`/clubs/${clubId}/status`, { status });
         },
         onSuccess: () => {
+            refetch()
             queryClient.invalidateQueries(['allClubs']);
             Swal.fire({
                 icon: 'success',

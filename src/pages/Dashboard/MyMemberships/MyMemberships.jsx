@@ -78,7 +78,7 @@ const MyMemberships = () => {
                                     </div>
 
                                     <div className="card-actions mt-4">
-                                        <Link to={`/club/${club._id}`} className="btn btn-outline btn-sm">
+                                        <Link to={`/clubs/${club._id}`} className="btn btn-outline btn-sm">
                                             View Club
                                         </Link>
                                     </div>

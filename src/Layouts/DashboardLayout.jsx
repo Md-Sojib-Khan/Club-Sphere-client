@@ -46,17 +46,17 @@ const DashboardLayout = () => {
                                 <span className="is-drawer-close:hidden">Home page</span>
                             </Link>
                         </li>
+                        <li>
+                            <NavLink className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="My Memberships" to="/dashboard/my-memberships">
+                                <MdCardMembership />
+                                <span className="is-drawer-close:hidden">My Memberships</span>
+                            </NavLink>
+                        </li>
 
                         {
                             role === 'member' && <>
 
                                 {/* our dashboard links */}
-                                <li>
-                                    <NavLink className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="My Memberships" to="/dashboard/my-memberships">
-                                        <MdCardMembership />
-                                        <span className="is-drawer-close:hidden">My Memberships</span>
-                                    </NavLink>
-                                </li>
                                 <li>
                                     <NavLink className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Payment History" to="/dashboard/payment-history">
                                         <FaRegCreditCard />
