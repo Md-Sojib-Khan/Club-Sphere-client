@@ -15,6 +15,7 @@ import EventsManagement from "../pages/Dashboard/EventsManagement/EventsManageme
 import ClubDetails from "../pages/ClubDetailsPage/ClubDetails";
 import MyMemberships from "../pages/Dashboard/MyMemberships/MyMemberships";
 import PaymentSuccess from "../pages/PaymentSuccess/PaymentSuccess";
+import EventDetails from "../pages/EventDetails/EventDetails";
 
 
 const router = createBrowserRouter([
@@ -45,6 +46,10 @@ const router = createBrowserRouter([
         {
           path: '/all-events',
           Component: AllEventPage
+        },
+        {
+          path: '/events/:id',
+          Component: EventDetails
         },
         {
           path: '/be-club-manager',

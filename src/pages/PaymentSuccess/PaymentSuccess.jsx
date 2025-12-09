@@ -17,7 +17,7 @@ const PaymentSuccess = () => {
             try {
                 if (sessionId) {
                     // Get session details from Stripe
-                    const res = await axiosSecure.get(`/session/${sessionId}`);
+                    const res = await axiosSecure.patch(`/verify-payment?session_id=${sessionId}`);
                     
                     if (res.data.payment_status === 'paid') {
                         Swal.fire({

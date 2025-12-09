@@ -13,8 +13,8 @@ const ClubDetails = () => {
     const axiosSecure = useAxiosSecure();
     const [loading, setLoading] = useState(false);
 
-    // Fetch club details
-    const { data: club, isLoading } = useQuery({
+     // Fetch club details
+    const { data: club, isLoading, refetch: refetchClub } = useQuery({
         queryKey: ['club', id],
         queryFn: async () => {
             const res = await axiosSecure.get(`/clubs/${id}`);
@@ -37,6 +37,7 @@ const ClubDetails = () => {
     const handleJoin = async () => {
         if (!user) {
             Swal.fire('Login Required', 'Please login first', 'warning');
+            navigate('/login');
             return;
         }
 
@@ -45,25 +46,18 @@ const ClubDetails = () => {
         try {
             if (club.membershipFee === 0) {
                 // Free club - direct join
-                await axiosSecure.post('/memberships', {
+                const res = await axiosSecure.post('/memberships', {
                     userEmail: user.email,
                     clubId: id,
                     status: 'active',
                     joinedAt: new Date()
                 });
 
-                // Record free payment
-                await axiosSecure.post('/payments', {
-                    userEmail: user.email,
-                    amount: 0,
-                    type: 'membership',
-                    clubId: id,
-                    status: 'completed',
-                    createdAt: new Date()
-                });
-
-                refetchMembership();
-                Swal.fire('Success!', 'You have joined the club!', 'success');
+                if (res.data) {
+                    await refetchMembership();
+                    await refetchClub();
+                    Swal.fire('Success!', 'You have joined the club!', 'success');
+                }
             } else {
                 // Paid club - Stripe payment
                 const res = await axiosSecure.post('/create-checkout-session', {
@@ -78,7 +72,7 @@ const ClubDetails = () => {
             }
         } catch (error) {
             console.error('Error:', error);
-            Swal.fire('Error', error.message, 'error');
+            Swal.fire('Error', error.response?.data?.error || error.message, 'error');
         } finally {
             setLoading(false);
         }
