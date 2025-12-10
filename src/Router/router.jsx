@@ -16,6 +16,7 @@ import ClubDetails from "../pages/ClubDetailsPage/ClubDetails";
 import MyMemberships from "../pages/Dashboard/MyMemberships/MyMemberships";
 import PaymentSuccess from "../pages/PaymentSuccess/PaymentSuccess";
 import EventDetails from "../pages/EventDetails/EventDetails";
+import ClubMembers from "../pages/Dashboard/ClubMembers/ClubMembers";
 
 
 const router = createBrowserRouter([
@@ -84,6 +85,10 @@ const router = createBrowserRouter([
       {
         path: 'my-memberships',
         element: <MyMemberships></MyMemberships>
+      },
+      {
+        path: 'club-members',
+        element: <ClubMembers></ClubMembers>
       }
     ]
   }

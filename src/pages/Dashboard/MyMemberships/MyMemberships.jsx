@@ -19,7 +19,7 @@ const MyMemberships = () => {
         },
         enabled: !!user?.email
     });
-
+console.log(memberships)
     // Fetch club details for each membership
     const { data: clubs = [] } = useQuery({
         queryKey: ['myClubsDetails', memberships],

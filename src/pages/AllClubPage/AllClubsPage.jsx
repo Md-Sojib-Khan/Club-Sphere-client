@@ -96,7 +96,7 @@ const AllClubsPage = () => {
                                 <select
                                     className="select select-bordered"
                                     value={categoryFilter}
-                                    onChange={(e) => setCategoryFilter(e.target.value)}
+                                    onChange={(e) => setSearchText(e.target.value)}
                                 >
                                     {categories.map(category => (
                                         <option key={category} value={category}>

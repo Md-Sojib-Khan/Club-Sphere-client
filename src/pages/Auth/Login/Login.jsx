@@ -2,7 +2,8 @@ import React from 'react';
 import { useForm } from 'react-hook-form';
 import SocialLogin from '../SocialLogin/SocialLogin';
 import { Link, useLocation, useNavigate } from 'react-router';
-import useAuth from '../../../Hooks/useAuth';
+import useAuth from '../../../hooks/useAuth';
+import { toast } from 'react-toastify';
 
 const Login = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
@@ -13,12 +14,20 @@ const Login = () => {
     const handleLogin = (data) => {
         console.log('form data', data);
         logInUser(data.email, data.password)
-            .then(result => {
-                console.log(result.user)
+            .then(() => {
+                toast.success("Login Successfully")
                 navigate(location?.state || '/')
             })
             .catch(error => {
-                console.log(error)
+                if (error.code === 'auth/invalid-credential') {
+                    toast.error("Invalid email or password ❌");
+                } else if (error.code === 'auth/user-not-found') {
+                    toast.error("No user found with this email ❗");
+                } else if (error.code === 'auth/wrong-password') {
+                    toast.error("Wrong password, try again!");
+                } else {
+                    toast.error(`Login failed: ${error.code}`);
+                }
             })
     }
 
