@@ -17,6 +17,7 @@ import MyMemberships from "../pages/Dashboard/MyMemberships/MyMemberships";
 import PaymentSuccess from "../pages/PaymentSuccess/PaymentSuccess";
 import EventDetails from "../pages/EventDetails/EventDetails";
 import ClubMembers from "../pages/Dashboard/ClubMembers/ClubMembers";
+import EventRegistration from "../pages/Dashboard/EventRegistration/EventRegistration";
 
 
 const router = createBrowserRouter([
@@ -83,13 +84,17 @@ const router = createBrowserRouter([
         element: <EventsManagement></EventsManagement>
       },
       {
+        path:'event-registrations',
+        element: <EventRegistration></EventRegistration>
+      },
+      {
         path: 'my-memberships',
         element: <MyMemberships></MyMemberships>
       },
       {
         path: 'club-members',
         element: <ClubMembers></ClubMembers>
-      }
+      },
     ]
   }
 ]);

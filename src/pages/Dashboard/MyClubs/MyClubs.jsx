@@ -6,6 +6,7 @@ import { MdCategory, MdDescription } from 'react-icons/md';
 import Swal from 'sweetalert2';
 import useAxiosSecure from '../../../hooks/useAxiosSecure';
 import useAuth from '../../../hooks/useAuth';
+import { Link } from 'react-router';
 
 const MyClubs = () => {
     const { user } = useAuth();
@@ -379,7 +380,7 @@ const MyClubs = () => {
                                 </div>
 
                                 <div className="card-actions justify-end mt-4">
-                                    <button className="btn btn-sm btn-outline">View Details</button>
+                                    <Link to={`/clubs/${club._id}`} className="btn btn-sm btn-outline">View Details</Link>
                                 </div>
                             </div>
                         </div>
