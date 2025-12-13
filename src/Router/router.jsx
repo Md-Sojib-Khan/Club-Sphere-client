@@ -20,6 +20,7 @@ import ClubMembers from "../pages/Dashboard/ClubMembers/ClubMembers";
 import EventRegistration from "../pages/Dashboard/EventRegistration/EventRegistration";
 import DashboardHome from "../pages/Dashboard/DashboardHome/DashboardHome";
 import AdminPayments from "../pages/Dashboard/AdminPayments/AdminPayments";
+import MyEvents from "../pages/Dashboard/MyEvents/MyEvents";
 
 
 const router = createBrowserRouter([
@@ -105,6 +106,10 @@ const router = createBrowserRouter([
         path: 'payment-history',
         element: <AdminPayments></AdminPayments>
       },
+      {
+        path: 'my-events',
+        element:<MyEvents></MyEvents>
+      }
     ]
   }
 ]);
