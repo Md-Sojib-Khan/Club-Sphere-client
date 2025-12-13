@@ -21,6 +21,7 @@ import EventRegistration from "../pages/Dashboard/EventRegistration/EventRegistr
 import DashboardHome from "../pages/Dashboard/DashboardHome/DashboardHome";
 import AdminPayments from "../pages/Dashboard/AdminPayments/AdminPayments";
 import MyEvents from "../pages/Dashboard/MyEvents/MyEvents";
+import MyPayments from "../pages/Dashboard/MyPayments/MyPayments";
 
 
 const router = createBrowserRouter([
@@ -109,6 +110,10 @@ const router = createBrowserRouter([
       {
         path: 'my-events',
         element:<MyEvents></MyEvents>
+      },
+      {
+        path: 'my-payments',
+        element:<MyPayments></MyPayments>
       }
     ]
   }
