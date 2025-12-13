@@ -180,7 +180,7 @@ const MyPayments = () => {
                                     </thead>
                                     
                                     <tbody className="divide-y divide-gray-200">
-                                        {payments.map((payment, index) => (
+                                        {payments.map((payment) => (
                                             <tr key={payment._id} className="hover:bg-gray-50">
                                                 <td className="py-3 px-4">
                                                     <div className="font-bold text-green-600">
