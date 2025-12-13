@@ -104,7 +104,7 @@ const router = createBrowserRouter([
       {
         path: 'payment-history',
         element: <AdminPayments></AdminPayments>
-      }
+      },
     ]
   }
 ]);
