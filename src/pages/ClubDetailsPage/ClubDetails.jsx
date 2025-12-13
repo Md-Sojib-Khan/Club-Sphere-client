@@ -3,9 +3,9 @@ import React, { useState } from 'react';
 import { useParams, useNavigate } from 'react-router';
 import { FaArrowLeft } from 'react-icons/fa';
 import Swal from 'sweetalert2';
-import useAxiosSecure from '../../hooks/useAxiosSecure';
-import useAuth from '../../hooks/useAuth';
 import Loading from '../../Components/Loading';
+import useAuth from '../../Hooks/useAuth';
+import useAxiosSecure from '../../Hooks/useAxiosSecure';
 
 const ClubDetails = () => {
     const { id } = useParams();

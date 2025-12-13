@@ -18,6 +18,7 @@ import PaymentSuccess from "../pages/PaymentSuccess/PaymentSuccess";
 import EventDetails from "../pages/EventDetails/EventDetails";
 import ClubMembers from "../pages/Dashboard/ClubMembers/ClubMembers";
 import EventRegistration from "../pages/Dashboard/EventRegistration/EventRegistration";
+import DashboardHome from "../pages/Dashboard/DashboardHome/DashboardHome";
 
 
 const router = createBrowserRouter([
@@ -67,6 +68,10 @@ const router = createBrowserRouter([
     path:'dashboard',
     element: <PrivateRoute><DashboardLayout></DashboardLayout></PrivateRoute>,
     children:[
+      {
+        index: true,
+        Component: DashboardHome
+      },
       {
         path:'users-management',
         element: <UsersManagement></UsersManagement>

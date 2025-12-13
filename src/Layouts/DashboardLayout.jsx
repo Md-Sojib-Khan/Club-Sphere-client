@@ -6,7 +6,7 @@ import useRole from '../hooks/useRole';
 import { MdCardMembership, MdEvent } from "react-icons/md";
 import { GiArchiveRegister } from "react-icons/gi";
 import { SiGoogletagmanager, SiKhanacademy } from 'react-icons/si';
-import useAuth from '../hooks/useAuth';
+import useAuth from '../Hooks/useAuth';
 
 const DashboardLayout = () => {
     const { role } = useRole();
