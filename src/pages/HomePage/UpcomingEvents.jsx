@@ -13,7 +13,7 @@ const UpcomingEvents = () => {
     const [totalEvents, setTotalEvents] = useState(0);
     const eventsPerPage = 6;
     const axiosSecure = useAxiosSecure();
-    
+
     // Framer Motion controls
     const heroControls = useAnimation();
     const eventsControls = useAnimation();
@@ -28,10 +28,10 @@ const UpcomingEvents = () => {
         try {
             setLoading(true);
             setError(null);
-            
+
             // Use your existing '/events/all' API
             const response = await axiosSecure.get(`/events/all?limit=${eventsPerPage * currentPage}`);
-            
+
             if (response.data.success) {
                 // Filter for upcoming events (events with future dates)
                 const now = new Date();
@@ -39,15 +39,15 @@ const UpcomingEvents = () => {
                     const eventDate = new Date(event.eventDate);
                     return eventDate > now;
                 });
-                
+
                 // Sort by date (closest first)
                 upcoming.sort((a, b) => new Date(a.eventDate) - new Date(b.eventDate));
-                
+
                 // Take only events for current page
                 const startIndex = 0;
                 const endIndex = currentPage * eventsPerPage;
                 const paginatedEvents = upcoming.slice(startIndex, endIndex);
-                
+
                 setEvents(paginatedEvents);
                 setTotalEvents(upcoming.length);
             } else {
@@ -117,7 +117,7 @@ const UpcomingEvents = () => {
             >
                 <div className="hero-content text-center">
                     <div className="max-w-3xl">
-                        <motion.h1 
+                        <motion.h1
                             initial={{ opacity: 0, y: -20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: 0.2 }}
@@ -125,24 +125,36 @@ const UpcomingEvents = () => {
                         >
                             Upcoming <span className="text-primary">Events</span>
                         </motion.h1>
-                        
+
                         <motion.p
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             transition={{ delay: 0.4 }}
                             className="text-xl mb-8 text-gray-600"
                         >
-                            Discover exciting events happening soon. 
+                            Discover exciting events happening soon.
                             Don't miss out on these amazing opportunities!
                         </motion.p>
-                        
+
+                        {/* View All Button with Animation */}
                         <motion.div
-                            initial={{ opacity: 0, scale: 0.8 }}
-                            animate={{ opacity: 1, scale: 1 }}
-                            transition={{ delay: 0.6 }}
+                            initial={{ opacity: 0 }}
+                            whileInView={{ opacity: 1 }}
+                            viewport={{ once: true }}
+                            transition={{ delay: 0.5 }}
+                            className="text-center"
                         >
-                            <Link to="/events" className="btn btn-primary btn-lg">
-                                Browse All Events <FaArrowRight className="ml-2" />
+                            <Link
+                                to="/all-events"
+                                className="inline-flex items-center gap-2 btn btn-primary btn-lg group"
+                            >
+                                <span>Browse All Events</span>
+                                <motion.span
+                                    animate={{ x: [0, 5, 0] }}
+                                    transition={{ duration: 1.5, repeat: Infinity }}
+                                >
+                                    <FaArrowRight className="group-hover:translate-x-1 transition-transform" />
+                                </motion.span>
                             </Link>
                         </motion.div>
                     </div>
@@ -159,11 +171,11 @@ const UpcomingEvents = () => {
                 >
                     <div className="flex justify-center items-center gap-4 mb-4">
                         <FaCalendar className="text-3xl text-primary" />
-                        <h2 className="text-4xl font-bold">
+                        <h2 className="text-3xl md:text-4xl font-bold mb-4 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
                             Upcoming Events
                         </h2>
                     </div>
-                    
+
                     <p className="text-gray-600 text-lg mb-8 max-w-2xl mx-auto">
                         Check out these upcoming events and register now to secure your spot
                     </p>
@@ -203,7 +215,7 @@ const UpcomingEvents = () => {
                         <p className="text-gray-500 mb-6">
                             There are no upcoming events at the moment. Check back later!
                         </p>
-                        <Link to="/events" className="btn btn-primary">
+                        <Link to={'/all-events'} className="btn btn-primary">
                             Browse All Events
                         </Link>
                     </motion.div>
