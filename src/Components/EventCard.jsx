@@ -1,64 +1,70 @@
 import React from 'react';
 import { Link } from 'react-router';
-import { FaCalendarAlt, FaMapMarkerAlt, FaUsers, FaClock } from 'react-icons/fa';
+import { motion } from 'framer-motion';
+import { FaMapMarkerAlt, FaUsers } from 'react-icons/fa';
 
 const EventCard = ({ event }) => {
-    const formatDate = (dateString) => {
-        const date = new Date(dateString);
-        return date.toLocaleDateString('en-US', {
-            weekday: 'short',
-            year: 'numeric',
-            month: 'short',
-            day: 'numeric'
-        });
-    };
-
-    const formatTime = (dateString) => {
-        const date = new Date(dateString);
-        return date.toLocaleTimeString('en-US', {
-            hour: '2-digit',
-            minute: '2-digit'
-        });
-    };
 
     return (
-        <div className="card bg-base-100 shadow-xl hover:shadow-2xl transition-all duration-300">
-            <figure className="h-48 overflow-hidden">
+        <motion.div
+            whileHover={{ y: -10 }}
+            whileTap={{ scale: 0.98 }}
+            className="card bg-base-100 shadow-xl hover:shadow-2xl transition-all duration-300 overflow-hidden"
+        >
+            <motion.figure 
+                className="h-48 overflow-hidden"
+                whileHover={{ scale: 1.05 }}
+                transition={{ duration: 0.3 }}
+            >
                 <img
                     src={event.eventImage || 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80'}
                     alt={event.title}
-                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                    className="w-full h-full object-cover"
                 />
-            </figure>
+            </motion.figure>
+            
             <div className="card-body p-6">
-                <div className="flex items-center justify-between mb-3">
+                <motion.div 
+                    className="flex items-center justify-between mb-3"
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.1 }}
+                >
                     <span className="badge badge-primary">
                         {event.category || 'Event'}
                     </span>
                     {event.isPaid ? (
-                        <span className="badge badge-secondary">${event.eventFee}</span>
+                        <motion.span 
+                            className="badge badge-secondary"
+                            whileHover={{ scale: 1.1 }}
+                        >
+                            ${event.eventFee}
+                        </motion.span>
                     ) : (
-                        <span className="badge badge-success">Free</span>
+                        <motion.span 
+                            className="badge badge-success"
+                            whileHover={{ scale: 1.1 }}
+                        >
+                            Free
+                        </motion.span>
                     )}
-                </div>
+                </motion.div>
                 
-                <h2 className="card-title text-xl font-bold mb-2 hover:text-primary transition-colors">
+                <motion.h2 
+                    className="card-title text-lg font-bold mb-2 hover:text-primary transition-colors h-10"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: 0.2 }}
+                >
                     <Link to={`/events/${event._id}`}>{event.title}</Link>
-                </h2>
+                </motion.h2>
                 
-                <p className="text-gray-600 mb-4 line-clamp-2">
-                    {event.description}
-                </p>
-                
-                <div className="space-y-2 text-sm text-gray-500">
-                    <div className="flex items-center gap-2">
-                        <FaCalendarAlt className="text-primary" />
-                        <span>{formatDate(event.eventDate)}</span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                        <FaClock className="text-primary" />
-                        <span>{formatTime(event.eventDate)}</span>
-                    </div>
+                <motion.div 
+                    className="space-y-2 text-sm text-gray-500"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: 0.4 }}
+                >
                     <div className="flex items-center gap-2">
                         <FaMapMarkerAlt className="text-primary" />
                         <span>{event.location}</span>
@@ -69,21 +75,31 @@ const EventCard = ({ event }) => {
                             <span>{event.attendees.length} attending</span>
                         </div>
                     )}
-                </div>
+                </motion.div>
                 
-                <div className="card-actions justify-between items-center mt-4">
+                <motion.div 
+                    className="card-actions justify-between items-center mt-4"
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.5 }}
+                >
                     <div className="text-sm">
                         <span className="font-medium">Host:</span> {event.hostedBy || 'Club'}
                     </div>
-                    <Link 
-                        to={`/events/${event._id}`}
-                        className="btn btn-primary btn-sm"
+                    <motion.div
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
                     >
-                        View Details
-                    </Link>
-                </div>
+                        <Link 
+                            to={`/events/${event._id}`}
+                            className="btn btn-primary btn-sm"
+                        >
+                            View Details
+                        </Link>
+                    </motion.div>
+                </motion.div>
             </div>
-        </div>
+        </motion.div>
     );
 };
 
