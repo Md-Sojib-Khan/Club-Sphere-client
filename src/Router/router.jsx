@@ -23,6 +23,8 @@ import MyEvents from "../pages/Dashboard/MyEvents/MyEvents";
 import MyPayments from "../pages/Dashboard/MyPayments/MyPayments";
 import MyProfile from "../pages/MyProfile/MyProfile";
 import AboutUs from "../pages/AboutUs/AboutUs";
+import AdminRoute from "./AdminRoute";
+import ClubManagerRoute from "./ClubManagerRoute";
 
 
 const router = createBrowserRouter([
@@ -82,23 +84,23 @@ const router = createBrowserRouter([
       },
       {
         path:'users-management',
-        element: <UsersManagement></UsersManagement>
+        element: <AdminRoute><UsersManagement></UsersManagement></AdminRoute>
       },
       {
         path: 'my-clubs',
-        element: <MyClubs></MyClubs>
+        element: <ClubManagerRoute><MyClubs></MyClubs></ClubManagerRoute>
       },
       {
         path: 'manage-clubs',
-        element: <ManageClubs></ManageClubs>
+        element: <AdminRoute><ManageClubs></ManageClubs></AdminRoute>
       },
       {
         path: 'event-management',
-        element: <EventsManagement></EventsManagement>
+        element: <ClubManagerRoute><EventsManagement></EventsManagement></ClubManagerRoute>
       },
       {
         path:'event-registrations',
-        element: <EventRegistration></EventRegistration>
+        element: <ClubManagerRoute><EventRegistration></EventRegistration></ClubManagerRoute>
       },
       {
         path: 'my-memberships',
@@ -106,11 +108,11 @@ const router = createBrowserRouter([
       },
       {
         path: 'club-members',
-        element: <ClubMembers></ClubMembers>
+        element: <ClubManagerRoute><ClubMembers></ClubMembers></ClubManagerRoute>
       },
       {
         path: 'payment-history',
-        element: <AdminPayments></AdminPayments>
+        element: <AdminRoute><AdminPayments></AdminPayments></AdminRoute>
       },
       {
         path: 'my-events',
