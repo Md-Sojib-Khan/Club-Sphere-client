@@ -22,6 +22,7 @@ import DashboardHome from "../pages/Dashboard/DashboardHome/DashboardHome";
 import AdminPayments from "../pages/Dashboard/AdminPayments/AdminPayments";
 import MyEvents from "../pages/Dashboard/MyEvents/MyEvents";
 import MyPayments from "../pages/Dashboard/MyPayments/MyPayments";
+import MyProfile from "../pages/MyProfile/MyProfile";
 
 
 const router = createBrowserRouter([
@@ -64,6 +65,10 @@ const router = createBrowserRouter([
         {
           path: '/payment-success',
           Component: PaymentSuccess
+        },
+        {
+          path: '/my-profile',
+          element: <PrivateRoute><MyProfile></MyProfile></PrivateRoute>
         }
     ]
   },

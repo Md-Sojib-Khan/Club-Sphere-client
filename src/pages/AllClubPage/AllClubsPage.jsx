@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { FaSearch, FaFilter, FaTimes } from 'react-icons/fa';
 import ClubCard from '../../Components/ClubCard';
 import useAxiosSecure from '../../hooks/useAxiosSecure';
+import Loading from '../../Components/Loading';
 
 
 const AllClubsPage = () => {
@@ -42,11 +43,7 @@ const AllClubsPage = () => {
     };
 
     if (isLoading) {
-        return (
-            <div className="flex justify-center items-center min-h-[400px]">
-                <div className="loading loading-spinner loading-lg"></div>
-            </div>
-        );
+        return <Loading></Loading> ;
     }
 
     return (

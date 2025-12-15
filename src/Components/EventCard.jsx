@@ -60,7 +60,7 @@ const EventCard = ({ event }) => {
                 </motion.h2>
                 
                 <motion.div 
-                    className="space-y-2 text-sm text-gray-500"
+                    className="space-y-2 text-sm text-gray-500 h-10"
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ delay: 0.4 }}
