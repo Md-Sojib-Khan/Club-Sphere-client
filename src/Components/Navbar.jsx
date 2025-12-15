@@ -12,7 +12,7 @@ const Navbar = () => {
         <li><NavLink to={'/'}>Home</NavLink></li>
         <li><NavLink to={'/all-clubs'}>All Clubs</NavLink></li>
         <li><NavLink to={'/all-events'}>All Events</NavLink></li>
-        <li><NavLink to={'/be-club-manager'}>Be Club Manager</NavLink></li>
+        <li><NavLink to={'/about-us'}>About Us</NavLink></li>
     </>
 
     const handleSignOut = () => {

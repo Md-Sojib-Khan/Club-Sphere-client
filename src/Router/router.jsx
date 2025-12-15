@@ -5,7 +5,6 @@ import Login from "../pages/Auth/Login/Login";
 import Register from "../pages/Auth/Register/Register";
 import AllClubsPage from "../pages/AllClubPage/AllClubsPage";
 import AllEventPage from "../pages/AllEventPage/AllEventPage";
-import BeClubManager from "../pages/BeClubManagerPage/BeClubManager";
 import PrivateRoute from "./PrivateRoute";
 import DashboardLayout from "../Layouts/DashboardLayout";
 import UsersManagement from "../pages/Dashboard/UsersManagement/UsersManagement";
@@ -23,6 +22,7 @@ import AdminPayments from "../pages/Dashboard/AdminPayments/AdminPayments";
 import MyEvents from "../pages/Dashboard/MyEvents/MyEvents";
 import MyPayments from "../pages/Dashboard/MyPayments/MyPayments";
 import MyProfile from "../pages/MyProfile/MyProfile";
+import AboutUs from "../pages/AboutUs/AboutUs";
 
 
 const router = createBrowserRouter([
@@ -59,8 +59,8 @@ const router = createBrowserRouter([
           Component: EventDetails
         },
         {
-          path: '/be-club-manager',
-          Component: BeClubManager
+          path: '/about-us',
+          Component: AboutUs
         },
         {
           path: '/payment-success',
