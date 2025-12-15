@@ -12,8 +12,8 @@ This project demonstrates my skills in React, Node.js, MongoDB, Firebase Authent
 
 🔐 Admin Test Account (For Evaluation)
 
-Email: admin@clubsphere.com
-Password: Admin@123
+Email: sojibkhan@gmail.com
+Password: Sojib12@
 
 ⚠️ This account is provided only for testing and evaluation purposes.
 
