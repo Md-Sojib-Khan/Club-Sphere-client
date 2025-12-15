@@ -8,8 +8,8 @@ import {
     FaCheckCircle,
     FaTimesCircle
 } from 'react-icons/fa';
-import useAuth from '../../../hooks/useAuth';
 import useAxiosSecure from '../../../hooks/useAxiosSecure';
+import useAuth from '../../../Hooks/useAuth';
 
 const MyEvents = () => {
     const { user } = useAuth();

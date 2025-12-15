@@ -3,8 +3,8 @@ import { useQuery } from '@tanstack/react-query';
 import { FaEnvelope, FaCalendarAlt, FaSpinner, FaFilter, FaEye, FaUsers, FaChevronDown, FaChevronUp } from 'react-icons/fa';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import useAuth from '../../../hooks/useAuth';
 import useAxiosSecure from '../../../hooks/useAxiosSecure';
+import useAuth from '../../../Hooks/useAuth';
 
 const ManagerEventRegistrations = () => {
     const { user } = useAuth();

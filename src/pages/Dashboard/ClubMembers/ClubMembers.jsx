@@ -14,7 +14,7 @@ import {
 } from 'react-icons/fa';
 import Swal from 'sweetalert2';
 import useAxiosSecure from '../../../hooks/useAxiosSecure';
-import useAuth from '../../../hooks/useAuth';
+import useAuth from '../../../Hooks/useAuth';
 
 const ClubMembers = () => {
     const { user } = useAuth();

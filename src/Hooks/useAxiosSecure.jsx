@@ -2,8 +2,9 @@ import axios from 'axios';
 import React, { useEffect } from 'react';
 import useAuth from './useAuth';
 
+
 const axiosSecure = axios.create({
-    baseURL: 'http://localhost:3000'
+    baseURL: 'https://club-sphere-server-nine.vercel.app'
 })
 
 const useAxiosSecure = () => {
