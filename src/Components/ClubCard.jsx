@@ -36,7 +36,7 @@ const ClubCard = ({ club }) => {
                     transition={{ delay: 0.1 }}
                 >
                     <div>
-                        <h2 className="card-title text-lg">{club.clubName}</h2>
+                        <h2 className="card-title text-lg h-10">{club.clubName}</h2>
                         <motion.div 
                             className={`badge ${club.status === 'approved' ? 'badge-success' : 'badge-warning'} mt-1`}
                             whileHover={{ scale: 1.1 }}

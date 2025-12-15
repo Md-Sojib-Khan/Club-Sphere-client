@@ -135,7 +135,7 @@ const MyEvents = () => {
                                     </thead>
                                     
                                     <tbody className="divide-y divide-gray-200">
-                                        {events.map((event, index) => (
+                                        {events.map((event) => (
                                             <tr key={event.registrationId} className="hover:bg-gray-50">
                                                 <td className="py-3 px-4">
                                                     <div className="font-medium text-gray-800">

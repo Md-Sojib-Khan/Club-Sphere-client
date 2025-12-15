@@ -470,54 +470,6 @@ const ClubMembers = () => {
                                     </div>
                                 )}
                             </div>
-
-                            {/* Quick Actions */}
-                            <div className="mt-6 grid grid-cols-1 md:grid-cols-3 gap-4">
-                                <div className="card bg-white shadow">
-                                    <div className="card-body">
-                                        <h3 className="card-title text-sm font-bold">Quick Actions</h3>
-                                        <div className="space-y-2">
-                                            <button
-                                                onClick={() => {
-                                                    Swal.fire({
-                                                        title: 'Set All Inactive to Expired?',
-                                                        text: 'This will change all inactive members to expired status',
-                                                        icon: 'warning',
-                                                        showCancelButton: true,
-                                                        confirmButtonText: 'Yes, proceed'
-                                                    }).then((result) => {
-                                                        if (result.isConfirmed) {
-                                                            // Implement bulk update
-                                                            Swal.fire('Done!', 'Status updated', 'success');
-                                                        }
-                                                    });
-                                                }}
-                                                className="btn btn-sm btn-warning w-full"
-                                            >
-                                                <FaUserTimes /> Expire All Inactive
-                                            </button>
-                                            <button
-                                                onClick={() => setStatusFilter('active')}
-                                                className="btn btn-sm btn-success w-full"
-                                            >
-                                                <FaUserCheck /> View Active Only
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div className="card bg-white shadow md:col-span-2">
-                                    <div className="card-body">
-                                        <h3 className="card-title text-sm font-bold">Status Guide</h3>
-                                        <ul className="text-sm space-y-1">
-                                            <li><span className="badge badge-success badge-xs mr-2"></span> Active: Member can participate in club activities</li>
-                                            <li><span className="badge badge-warning badge-xs mr-2"></span> Inactive: Temporary suspension of privileges</li>
-                                            <li><span className="badge badge-error badge-xs mr-2"></span> Expired: Membership period has ended</li>
-                                            <li><span className="badge badge-secondary badge-xs mr-2"></span> Suspended: Manual suspension by manager</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
                         </>
                     )}
                 </>

@@ -13,7 +13,7 @@ const AllEventsPage = () => {
     const [priceFilter, setPriceFilter] = useState('all');
 
     // Fetch all events
-    const { data: events = [], isLoading, refetch } = useQuery({
+    const { data: events = [], isLoading } = useQuery({
         queryKey: ['all-events'],
         queryFn: async () => {
             // First get all clubs
