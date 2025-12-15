@@ -14,18 +14,16 @@ const Footer = () => {
                             <h1 className='font-bold text-2xl bg-gradient-to-r from-purple-500 to-pink-500 bg-clip-text text-transparent'>ClubSphere</h1>
                         </div>
                         <p className="text-gray-300 leading-relaxed">
-                            Your ultimate destination for movie magic. Discover, explore, and enjoy the world of cinema 
-                            with detailed information, reviews, and recommendations. From classic films to latest blockbusters, 
-                            we bring the theater experience to you.
+                            Your ultimate hub for local communities and shared passions. Discover clubs, join events, and connect with people who share your interests. From creative meetups to active groups, ClubSphere brings communities closer together.
                         </p>
                         <div className="flex gap-4 mt-4">
-                            <a href="#" className="text-gray-400 hover:text-purple-500 transition-colors">
+                            <a href="https://github.com/Md-Sojib-Khan" className="text-gray-400 hover:text-purple-500 transition-colors">
                                 <FaGithub className="text-xl" />
                             </a>
                             <a href="#" className="text-gray-400 hover:text-blue-400 transition-colors">
                                 <FaXTwitter className="text-xl" />
                             </a>
-                            <a href="#" className="text-gray-400 hover:text-blue-600 transition-colors">
+                            <a href="https://www.linkedin.com/in/md-sojib-khan/" className="text-gray-400 hover:text-blue-600 transition-colors">
                                 <FaLinkedin className="text-xl" />
                             </a>
                             <a href="#" className="text-gray-400 hover:text-red-600 transition-colors">
@@ -37,8 +35,8 @@ const Footer = () => {
                     {/* Quick Links */}
                     <nav className='flex flex-col gap-3'>
                         <h6 className="text-lg font-semibold mb-2 text-white">Explore</h6>
-                        <a className="text-gray-300 hover:text-purple-400 transition-colors cursor-pointer">Movies</a>
-                        <a className="text-gray-300 hover:text-purple-400 transition-colors cursor-pointer">TV Shows</a>
+                        <a href='all-clubs' className="text-gray-300 hover:text-purple-400 transition-colors cursor-pointer">Clubs</a>
+                        <a href='all-events' className="text-gray-300 hover:text-purple-400 transition-colors cursor-pointer">Events</a>
                         <a className="text-gray-300 hover:text-purple-400 transition-colors cursor-pointer">Trending</a>
                         <a className="text-gray-300 hover:text-purple-400 transition-colors cursor-pointer">Upcoming</a>
                         <a className="text-gray-300 hover:text-purple-400 transition-colors cursor-pointer">Top Rated</a>
@@ -47,11 +45,11 @@ const Footer = () => {
                     {/* Categories */}
                     <nav className='flex flex-col gap-3'>
                         <h6 className="text-lg font-semibold mb-2 text-white">Categories</h6>
-                        <a className="text-gray-300 hover:text-purple-400 transition-colors cursor-pointer">Action</a>
-                        <a className="text-gray-300 hover:text-purple-400 transition-colors cursor-pointer">Comedy</a>
-                        <a className="text-gray-300 hover:text-purple-400 transition-colors cursor-pointer">Drama</a>
-                        <a className="text-gray-300 hover:text-purple-400 transition-colors cursor-pointer">Sci-Fi</a>
-                        <a className="text-gray-300 hover:text-purple-400 transition-colors cursor-pointer">Horror</a>
+                        <a className="text-gray-300 hover:text-purple-400 transition-colors cursor-pointer">Sports</a>
+                        <a className="text-gray-300 hover:text-purple-400 transition-colors cursor-pointer">Photography</a>
+                        <a className="text-gray-300 hover:text-purple-400 transition-colors cursor-pointer">Gaming</a>
+                        <a className="text-gray-300 hover:text-purple-400 transition-colors cursor-pointer">Tech</a>
+                        <a className="text-gray-300 hover:text-purple-400 transition-colors cursor-pointer">Social</a>
                     </nav>
 
                     {/* Support */}
@@ -69,13 +67,8 @@ const Footer = () => {
                 <div className="border-t border-gray-700 pt-6 mt-6">
                     <div className="flex flex-col md:flex-row justify-between items-center gap-4">
                         <aside className="flex items-center gap-2 text-gray-300">
-                            <p>© {new Date().getFullYear()} MovieMaster Pro. All rights reserved.</p>
+                            <p>© {new Date().getFullYear()} ClubSphere. All rights reserved.</p>
                         </aside>
-                        <div className="flex items-center gap-2 text-gray-300">
-                            <span>Made with</span>
-                            <FaHeart className="text-red-500" />
-                            <span>for movie lovers</span>
-                        </div>
                         <nav className="flex gap-6 text-gray-300">
                             <a className="hover:text-purple-400 transition-colors cursor-pointer text-sm">Privacy</a>
                             <a className="hover:text-purple-400 transition-colors cursor-pointer text-sm">Terms</a>

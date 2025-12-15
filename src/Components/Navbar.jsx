@@ -1,11 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Link, NavLink } from 'react-router';
 import { toast } from 'react-toastify';
 import userImg from '../assets/user.png'
 import useAuth from '../Hooks/useAuth';
 
 const Navbar = () => {
-    // const [theme, setTheme] = useState(localStorage.getItem('theme') || "light")
     const { user, logOutUser } = useAuth();
 
     const links = <>
@@ -20,17 +19,6 @@ const Navbar = () => {
             .then(() => toast.success('Sign-out successful'))
             .catch(e => toast(e.code))
     }
-
-    // useEffect(() => {
-    //     const html = document.querySelector('html')
-    //     html.setAttribute("data-theme", theme)
-    //     localStorage.setItem("theme", theme)
-    // }, [theme])
-
-
-    // const handleTheme = (checked) => {
-    //     setTheme(checked ? "dark" : "light")
-    // }
 
     return (
         <div className="navbar bg-base-100 shadow-sm md:px-10 sticky top-0 z-50">
@@ -53,11 +41,6 @@ const Navbar = () => {
                 </ul>
             </div>
             <div className="navbar-end gap-3">
-                {/* <input
-                    onChange={(e) => handleTheme(e.target.checked)}
-                    type="checkbox"
-                    defaultChecked={localStorage.getItem('theme') === "dark"}
-                    className="toggle" /> */}
                 {
                     user
                         ? <div className="dropdown dropdown-end dropdown-hover cursor-pointer">

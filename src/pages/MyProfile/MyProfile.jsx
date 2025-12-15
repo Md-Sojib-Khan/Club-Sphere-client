@@ -14,12 +14,12 @@ import {
     FaClock,
     FaCog
 } from 'react-icons/fa';
-import useAuth from '../../hooks/useAuth';
 import useAxiosSecure from '../../hooks/useAxiosSecure';
 import { toast } from 'react-toastify';
+import useAuth from '../../Hooks/useAuth';
 
 const MyProfile = () => {
-    const { user, logOut, updateUser } = useAuth();
+    const { user, logOutUser, updateUser } = useAuth();
     const axiosSecure = useAxiosSecure();
     const queryClient = useQueryClient();
     const [editMode, setEditMode] = useState(false);
@@ -32,13 +32,11 @@ const MyProfile = () => {
             if (!user?.uid) return null;
 
             try {
-                // Try to get user from database
                 const userRes = await axiosSecure.get(`/users/get/${user.uid}`);
 
                 if (userRes.data.success) {
                     return userRes.data.user;
                 } else {
-                    // If user not in database, use Firebase data
                     return {
                         uid: user.uid,
                         email: user.email,
@@ -49,7 +47,6 @@ const MyProfile = () => {
                 }
             } catch (error) {
                 console.error('Error fetching profile:', error);
-                // Fallback to Firebase data
                 return {
                     uid: user.uid,
                     email: user.email,
@@ -90,13 +87,11 @@ const MyProfile = () => {
 
     const updateProfileMutation = useMutation({
         mutationFn: async (data) => {
-            // 1. Firebase user update করুন
             await updateUser({
                 displayName: data.displayName,
                 photoURL: data.photoURL || user.photoURL
             });
 
-            // 2. আপনার database এ update করুন
             const response = await axiosSecure.patch(`/users/${user.uid}`, {
                 displayName: data.displayName,
                 photoURL: data.photoURL || user.photoURL,
@@ -106,17 +101,14 @@ const MyProfile = () => {
             return response.data;
         },
         onSuccess: () => {
-            // 3. Firebase auth state refresh করুন
             queryClient.invalidateQueries(['userProfile', user.uid]);
-            queryClient.invalidateQueries(['authUser']); // যদি auth user cache করে থাকেন
+            queryClient.invalidateQueries(['authUser']);
 
-            // 4. Local state update করুন
             setEditMode(false);
             toast.success('Profile updated successfully!');
 
-            // 5. Page reload না করেই Firebase user refresh করুন
             setTimeout(() => {
-                window.location.reload(); // অথবা Firebase user re-fetch করুন
+                window.location.reload();
             }, 100);
         },
         onError: (error) => {
@@ -133,17 +125,15 @@ const MyProfile = () => {
 
         updateProfileMutation.mutate({
             displayName,
-            photoURL: user.photoURL // Firebase থেকে photoURL ব্যবহার করছি
+            photoURL: user.photoURL
         });
     };
 
-    const handleLogout = async () => {
-        try {
-            await logOut();
-        } catch (error) {
-            console.error('Logout error:', error);
+    const handleLogout = () => {
+            logOutUser()
+                .then(() => toast.success('Sign-out successful'))
+                .catch(e => toast(e.code))
         }
-    };
 
     const formatDate = (dateString) => {
         const date = new Date(dateString);
@@ -187,7 +177,6 @@ const MyProfile = () => {
                         className="bg-white rounded-xl shadow-lg p-6 mb-6"
                     >
                         <div className="flex items-center gap-6">
-                            {/* Avatar - Firebase photoURL ব্যবহার করছি */}
                             <div className="relative">
                                 <img
                                     src={userPhotoURL}
