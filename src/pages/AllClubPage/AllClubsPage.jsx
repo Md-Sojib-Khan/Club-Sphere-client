@@ -117,9 +117,9 @@ const AllClubsPage = () => {
     }
 
     return (
-        <div className="min-h-screen bg-gray-50">
+        <div className="min-h-screen bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
             {/* Hero Section */}
-            <div className="bg-gradient-to-r from-blue-600 to-purple-600 text-white py-12">
+            <div className="bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-800 dark:to-purple-800 text-white py-12">
                 <div className="container mx-auto px-4">
                     <h1 className="text-4xl md:text-5xl font-bold text-center mb-4">
                         Discover Amazing Clubs
@@ -132,16 +132,16 @@ const AllClubsPage = () => {
 
             {/* Filters Section */}
             <div className="container mx-auto px-4 py-8">
-                <div className="bg-white rounded-xl shadow-lg p-6 mb-8">
+                <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg dark:shadow-gray-700/20 p-6 mb-8 transition-colors duration-300">
                     <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
                         {/* Search Input */}
                         <div className="md:col-span-2">
                             <div className="relative">
-                                <FaSearch className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400" />
+                                <FaSearch className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 dark:text-gray-500" />
                                 <input
                                     type="text"
                                     placeholder="Search clubs by name, category, or location..."
-                                    className="input input-bordered pl-12 w-full"
+                                    className="input input-bordered dark:input-bordered-dark pl-12 w-full bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100"
                                     value={inputValue}
                                     onChange={(e) => setInputValue(e.target.value)}
                                     onKeyDown={handleSearchSubmit}
@@ -155,7 +155,7 @@ const AllClubsPage = () => {
                                         }}
                                         className="absolute right-4 top-1/2 transform -translate-y-1/2"
                                     >
-                                        <FaTimes className="text-gray-400 hover:text-gray-600" />
+                                        <FaTimes className="text-gray-400 dark:text-gray-500 hover:text-gray-600 dark:hover:text-gray-400" />
                                     </button>
                                 )}
                             </div>
@@ -164,9 +164,9 @@ const AllClubsPage = () => {
                         {/* Category Filter */}
                         <div>
                             <div className="flex items-center gap-2">
-                                <FaFilter className="text-gray-500" />
+                                <FaFilter className="text-gray-500 dark:text-gray-400" />
                                 <select
-                                    className="select select-bordered w-full"
+                                    className="select select-bordered dark:select-bordered-dark w-full bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100"
                                     value={categoryFilter}
                                     onChange={(e) => setCategoryFilter(e.target.value)}
                                 >
@@ -182,9 +182,9 @@ const AllClubsPage = () => {
                         {/* Sort Filter */}
                         <div>
                             <div className="flex items-center gap-2">
-                                <FaSortAmountDown className="text-gray-500" />
+                                <FaSortAmountDown className="text-gray-500 dark:text-gray-400" />
                                 <select
-                                    className="select select-bordered w-full"
+                                    className="select select-bordered dark:select-bordered-dark w-full bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100"
                                     value={sortOption}
                                     onChange={(e) => setSortOption(e.target.value)}
                                 >
@@ -201,25 +201,25 @@ const AllClubsPage = () => {
                     {/* Active Filters Display */}
                     {(debouncedSearch || categoryFilter !== 'all' || sortOption !== 'newest') && (
                         <div className="mt-4 flex flex-wrap items-center gap-2">
-                            <span className="text-sm text-gray-600">Active filters:</span>
+                            <span className="text-sm text-gray-600 dark:text-gray-400">Active filters:</span>
                             {debouncedSearch && (
-                                <span className="badge badge-outline">
+                                <span className="badge badge-outline dark:badge-outline-dark">
                                     Search: {debouncedSearch}
                                 </span>
                             )}
                             {categoryFilter !== 'all' && (
-                                <span className="badge badge-outline">
+                                <span className="badge badge-outline dark:badge-outline-dark">
                                     Category: {categoryFilter}
                                 </span>
                             )}
                             {sortOption !== 'newest' && (
-                                <span className="badge badge-outline">
+                                <span className="badge badge-outline dark:badge-outline-dark">
                                     Sort: {sortOptions.find(opt => opt.value === sortOption)?.label}
                                 </span>
                             )}
                             <button
                                 onClick={clearFilters}
-                                className="btn btn-outline btn-xs ml-auto"
+                                className="btn btn-outline dark:btn-outline-dark btn-xs ml-auto"
                             >
                                 Clear All
                             </button>
@@ -229,12 +229,12 @@ const AllClubsPage = () => {
 
                 {/* Clubs Count and Sort Info */}
                 <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 gap-4">
-                    <h2 className="text-2xl font-bold">
+                    <h2 className="text-2xl font-bold text-gray-800 dark:text-gray-100">
                         {sortedClubs.length} {sortedClubs.length === 1 ? 'Club' : 'Clubs'} Found
                     </h2>
                     
                     {sortOption !== 'newest' && (
-                        <div className="text-sm text-gray-600">
+                        <div className="text-sm text-gray-600 dark:text-gray-400">
                             Sorted by: <span className="font-semibold">
                                 {sortOptions.find(opt => opt.value === sortOption)?.label}
                             </span>
@@ -244,11 +244,13 @@ const AllClubsPage = () => {
 
                 {/* Clubs Grid */}
                 {sortedClubs.length === 0 ? (
-                    <div className="text-center py-12 bg-white rounded-xl shadow">
+                    <div className="text-center py-12 bg-white dark:bg-gray-800 rounded-xl shadow dark:shadow-gray-700/20 transition-colors duration-300">
                         <div className="max-w-md mx-auto">
-                            <div className="text-6xl mb-4 opacity-20">🔍</div>
-                            <h3 className="text-xl font-semibold mb-2">No Clubs Found</h3>
-                            <p className="text-gray-600 mb-6">
+                            <div className="text-6xl mb-4 opacity-20 dark:opacity-10">🔍</div>
+                            <h3 className="text-xl font-semibold mb-2 text-gray-800 dark:text-gray-100">
+                                No Clubs Found
+                            </h3>
+                            <p className="text-gray-600 dark:text-gray-400 mb-6">
                                 {debouncedSearch || categoryFilter !== 'all' 
                                     ? 'Try changing your search criteria' 
                                     : 'No clubs available at the moment'}
@@ -256,7 +258,7 @@ const AllClubsPage = () => {
                             {(debouncedSearch || categoryFilter !== 'all') && (
                                 <button
                                     onClick={clearFilters}
-                                    className="btn btn-primary"
+                                    className="btn btn-primary dark:btn-primary-dark"
                                 >
                                     Clear Filters
                                 </button>
@@ -274,27 +276,29 @@ const AllClubsPage = () => {
                 {/* Stats Section */}
                 {sortedClubs.length > 0 && (
                     <div className="mt-12">
-                        <h3 className="text-xl font-bold mb-4">Club Statistics</h3>
+                        <h3 className="text-xl font-bold mb-4 text-gray-800 dark:text-gray-100">
+                            Club Statistics
+                        </h3>
                         <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-                            <div className="stat bg-white shadow rounded-lg p-4">
-                                <div className="stat-title">Total Clubs</div>
-                                <div className="stat-value">{sortedClubs.length}</div>
+                            <div className="stat bg-white dark:bg-gray-800 shadow dark:shadow-gray-700/20 rounded-lg p-4 transition-colors duration-300">
+                                <div className="stat-title text-gray-600 dark:text-gray-400">Total Clubs</div>
+                                <div className="stat-value text-gray-800 dark:text-gray-100">{sortedClubs.length}</div>
                             </div>
-                            <div className="stat bg-white shadow rounded-lg p-4">
-                                <div className="stat-title">Categories</div>
-                                <div className="stat-value">
+                            <div className="stat bg-white dark:bg-gray-800 shadow dark:shadow-gray-700/20 rounded-lg p-4 transition-colors duration-300">
+                                <div className="stat-title text-gray-600 dark:text-gray-400">Categories</div>
+                                <div className="stat-value text-gray-800 dark:text-gray-100">
                                     {new Set(sortedClubs.map(c => c.category)).size}
                                 </div>
                             </div>
-                            <div className="stat bg-white shadow rounded-lg p-4">
-                                <div className="stat-title">Total Members</div>
-                                <div className="stat-value">
+                            <div className="stat bg-white dark:bg-gray-800 shadow dark:shadow-gray-700/20 rounded-lg p-4 transition-colors duration-300">
+                                <div className="stat-title text-gray-600 dark:text-gray-400">Total Members</div>
+                                <div className="stat-value text-gray-800 dark:text-gray-100">
                                     {sortedClubs.reduce((sum, club) => sum + (club.totalMembers || 0), 0)}
                                 </div>
                             </div>
-                            <div className="stat bg-white shadow rounded-lg p-4">
-                                <div className="stat-title">Free Clubs</div>
-                                <div className="stat-value">
+                            <div className="stat bg-white dark:bg-gray-800 shadow dark:shadow-gray-700/20 rounded-lg p-4 transition-colors duration-300">
+                                <div className="stat-title text-gray-600 dark:text-gray-400">Free Clubs</div>
+                                <div className="stat-value text-gray-800 dark:text-gray-100">
                                     {sortedClubs.filter(c => (c.membershipFee || 0) === 0).length}
                                 </div>
                             </div>

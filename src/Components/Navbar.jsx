@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, NavLink } from 'react-router';
 import { toast } from 'react-toastify';
 import userImg from '../assets/user.png'
 import useAuth from '../Hooks/useAuth';
 
 const Navbar = () => {
+    const [theme, setTheme] = useState(localStorage.getItem('theme') || "light")
     const { user, logOutUser } = useAuth();
 
     const links = <>
@@ -18,6 +19,16 @@ const Navbar = () => {
         logOutUser()
             .then(() => toast.success('Sign-out successful'))
             .catch(e => toast(e.code))
+    }
+
+    useEffect(() => {
+        const html = document.querySelector('html')
+        html.setAttribute("data-theme", theme)
+        localStorage.setItem("theme", theme)
+    }, [theme])
+
+    const handleTheme = (checked) => {
+        setTheme(checked ? "dark" : "light")
     }
 
     return (
@@ -41,22 +52,27 @@ const Navbar = () => {
                 </ul>
             </div>
             <div className="navbar-end gap-3">
+                <input
+                    onChange={(e) => handleTheme(e.target.checked)}
+                    type="checkbox"
+                    defaultChecked={localStorage.getItem('theme') === "dark"}
+                    className="toggle" />
                 {
                     user
                         ? <div className="dropdown dropdown-end dropdown-hover cursor-pointer">
                             <div tabIndex={0} role="button" >
-                                <img className='w-10 h-10 object-cover rounded-full border-2 border-white' src={user?.photoURL ? user?.photoURL : userImg } alt="" />
+                                <img className='w-10 h-10 object-cover rounded-full border-2 border-white' src={user?.photoURL ? user?.photoURL : userImg} alt="" />
                             </div>
                             <ul tabIndex="-1" className="dropdown-content menu bg-base-100 rounded-box z-20 w-52 p-2 shadow-sm space-y-2">
                                 <li><Link to={'my-profile'} className='font-medium'>Profile</Link></li>
                                 <li><Link to={'/dashboard'} className='font-medium'>Dashboard</Link></li>
-                                <li><button onClick={handleSignOut} className="btn bg-red-500 btn-sm rounded-full px-6 transition-all duration-300 hover:scale-105 hover:shadow-lg border-0 text-white font-medium">LogOut</button></li>
+                                <li><button onClick={handleSignOut} className="btn bg-primary btn-sm rounded-full px-6 transition-all duration-300 hover:scale-105 hover:shadow-lg border-0 text-white font-medium">LogOut</button></li>
                             </ul>
                         </div>
 
                         : <div className='flex items-center gap-2'>
-                            <Link to={'/login'} className="btn bg-red-500 btn-sm rounded-full px-6 transition-all duration-300 hover:scale-105 hover:shadow-lg border-0 text-white font-medium">Login</Link>
-                            <Link to={'/register'} className="btn bg-red-500 btn-sm rounded-full px-6 transition-all duration-300 hover:scale-105 hover:shadow-lg border-0 text-white font-medium hidden md:inline-flex">Register</Link>
+                            <Link to={'/login'} className="btn bg-primary btn-sm rounded-full px-6 transition-all duration-300 hover:scale-105 hover:shadow-lg border-0 text-white font-medium">Login</Link>
+                            <Link to={'/register'} className="btn bg-primary btn-sm rounded-full px-6 transition-all duration-300 hover:scale-105 hover:shadow-lg border-0 text-white font-medium hidden md:inline-flex">Register</Link>
                         </div>
                 }
 

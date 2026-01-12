@@ -48,10 +48,10 @@ const HeroSection = () => {
   };
 
   return (
-    <section className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-primary/5 overflow-hidden relative">
+    <section className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-primary/5 dark:from-gray-900 dark:via-gray-800 dark:to-primary/10 overflow-hidden relative transition-colors duration-300">
       {/* Animated Background Elements */}
       <motion.div
-        className="absolute top-0 left-5 w-64 h-64 bg-primary/10 rounded-full blur-3xl"
+        className="absolute top-0 left-5 w-64 h-64 bg-primary/10 dark:bg-primary/5 rounded-full blur-3xl"
         animate={{
           x: [0, 100, 0],
           y: [0, -50, 0],
@@ -63,7 +63,7 @@ const HeroSection = () => {
         }}
       />
       <motion.div
-        className="absolute bottom-20 right-5 w-80 h-80 bg-secondary/10 rounded-full blur-3xl"
+        className="absolute bottom-20 right-5 w-80 h-80 bg-secondary/10 dark:bg-secondary/5 rounded-full blur-3xl"
         animate={{
           x: [0, -80, 0],
           y: [0, 60, 0],
@@ -86,7 +86,7 @@ const HeroSection = () => {
           {/* Animated Badge */}
           <motion.div
             variants={itemVariants}
-            className="inline-flex items-center gap-3 bg-gradient-to-r from-primary to-secondary text-white px-6 py-3 rounded-full mb-8 shadow-lg"
+            className="inline-flex items-center gap-3 bg-gradient-to-r from-primary to-secondary text-white px-6 py-3 rounded-full mb-8 shadow-lg dark:shadow-primary/20"
             whileHover={{ scale: 1.05 }}
             animate={pulseAnimation}
           >
@@ -108,12 +108,12 @@ const HeroSection = () => {
           {/* Main Heading */}
           <motion.div variants={itemVariants} className="relative mb-8">
             <h1 className="text-5xl md:text-7xl lg:text-8xl font-black mb-6 leading-tight">
-              <span className="bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent dark:from-primary/90 dark:via-secondary/90 dark:to-accent/90">
                 Find Your
               </span>
               <br />
               <motion.span
-                className="relative inline-block"
+                className="relative inline-block text-gray-900 dark:text-white"
                 animate={{ 
                   textShadow: [
                     "0 0 20px rgba(59,130,246,0.5)", 
@@ -135,7 +135,7 @@ const HeroSection = () => {
             
             {/* Animated Compass */}
             <motion.div
-              className="absolute -top-4 -right-4 md:-right-10 text-6xl md:text-8xl text-primary/20"
+              className="absolute -top-4 -right-4 md:-right-10 text-6xl md:text-8xl text-primary/20 dark:text-primary/10"
               animate={{ rotate: 360 }}
               transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
             >
@@ -146,55 +146,13 @@ const HeroSection = () => {
           {/* Subtitle */}
           <motion.p
             variants={itemVariants}
-            className="text-xl md:text-2xl text-gray-700 mb-12 max-w-3xl mx-auto leading-relaxed"
+            className="text-xl md:text-2xl text-gray-700 dark:text-gray-300 mb-12 max-w-3xl mx-auto leading-relaxed"
           >
-            Discover <span className="font-semibold text-primary">local clubs</span> and communities 
+            Discover <span className="font-semibold text-primary dark:text-primary/90">local clubs</span> and communities 
             that match your passion. From photography to tech—your tribe is waiting.
           </motion.p>
 
-          {/* Search Bar */}
-          {/* <motion.div
-            variants={itemVariants}
-            className="max-w-2xl mx-auto mb-12"
-          >
-            <div className="relative">
-              <motion.div
-                className="absolute inset-0 bg-gradient-to-r from-primary/20 to-secondary/20 rounded-2xl blur-lg"
-                animate={pulseAnimation}
-              />
-              <div className="relative bg-white rounded-2xl shadow-2xl p-2 border border-gray-200">
-                <div className="flex items-center">
-                  <div className="flex items-center pl-4">
-                    <FaSearch className="text-gray-400 text-xl" />
-                    <input
-                      type="text"
-                      placeholder="Search clubs, interests, or locations..."
-                      className="w-full px-4 py-5 text-lg focus:outline-none bg-transparent"
-                    />
-                  </div>
-                  <div className="flex items-center pr-2">
-                    <FaMapMarkerAlt className="text-gray-400 text-xl mr-2" />
-                    <select className="border-l pl-2 pr-4 py-2 text-gray-600 focus:outline-none bg-transparent">
-                      <option>Near me</option>
-                      <option>Dhaka</option>
-                      <option>Chittagong</option>
-                      <option>Anywhere</option>
-                    </select>
-                    <motion.button
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
-                      className="btn btn-primary rounded-xl px-8 py-3 font-bold ml-4"
-                    >
-                      Explore
-                      <FaArrowRight className="ml-2" />
-                    </motion.button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </motion.div> */}
-
-          {/* Stats Section */}
+          {/* Stats Grid */}
           <motion.div
             variants={itemVariants}
             className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-3xl mx-auto mb-12"
@@ -231,7 +189,7 @@ const HeroSection = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: stat.delay }}
                 whileHover={{ y: -10, scale: 1.05 }}
-                className="bg-white/80 backdrop-blur-sm p-6 rounded-2xl shadow-xl border border-gray-200"
+                className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm p-6 rounded-2xl shadow-xl border border-gray-200 dark:border-gray-700"
               >
                 <motion.div
                   className="text-3xl mb-3 inline-block"
@@ -243,7 +201,7 @@ const HeroSection = () => {
                 <div className="text-3xl font-black bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
                   {stat.number}
                 </div>
-                <div className="text-sm font-medium text-gray-600 mt-1">{stat.label}</div>
+                <div className="text-sm font-medium text-gray-600 dark:text-gray-400 mt-1">{stat.label}</div>
               </motion.div>
             ))}
           </motion.div>
@@ -279,7 +237,7 @@ const HeroSection = () => {
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="btn btn-outline btn-secondary btn-lg rounded-full px-10 py-4 text-lg font-bold border-2"
+                className="btn btn-outline btn-secondary btn-lg rounded-full px-10 py-4 text-lg font-bold border-2 border-secondary dark:border-secondary/70 text-secondary dark:text-secondary/80 hover:bg-secondary/10 dark:hover:bg-secondary/20"
               >
                 <span className="flex items-center">
                   Start Your Club
@@ -294,7 +252,7 @@ const HeroSection = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1.2 }}
-            className="flex flex-wrap justify-center gap-6 mt-8 text-gray-600"
+            className="flex flex-wrap justify-center gap-6 mt-8 text-gray-600 dark:text-gray-400"
           >
             {[
               "✅ Free to join",
@@ -305,7 +263,7 @@ const HeroSection = () => {
               <motion.div
                 key={index}
                 whileHover={{ scale: 1.1 }}
-                className="flex items-center gap-2 bg-white/50 backdrop-blur-sm px-4 py-2 rounded-full"
+                className="flex items-center gap-2 bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm px-4 py-2 rounded-full"
               >
                 <div className="w-2 h-2 bg-primary rounded-full" />
                 <span className="font-medium">{badge}</span>
@@ -323,10 +281,10 @@ const HeroSection = () => {
             <motion.div
               animate={{ y: [0, 10, 0] }}
               transition={{ duration: 2, repeat: Infinity }}
-              className="text-gray-400 flex flex-col items-center"
+              className="text-gray-400 dark:text-gray-500 flex flex-col items-center"
             >
               <span className="text-sm mb-2">Scroll to explore</span>
-              <div className="w-6 h-10 border-2 border-gray-300 rounded-full flex justify-center">
+              <div className="w-6 h-10 border-2 border-gray-300 dark:border-gray-600 rounded-full flex justify-center">
                 <motion.div
                   className="w-1 h-3 bg-primary rounded-full mt-2"
                   animate={{ y: [0, 12, 0] }}
@@ -339,7 +297,7 @@ const HeroSection = () => {
 
         {/* Floating Elements (Decorative) */}
         <motion.div
-          className="hidden lg:block absolute top-40 left-10 text-4xl"
+          className="hidden lg:block absolute top-40 left-10 text-4xl opacity-80 dark:opacity-60"
           animate={{
             y: [0, -30, 0],
             rotate: [0, 10, -10, 0]
@@ -354,7 +312,7 @@ const HeroSection = () => {
         </motion.div>
 
         <motion.div
-          className="hidden lg:block absolute top-60 right-20 text-5xl"
+          className="hidden lg:block absolute top-60 right-20 text-5xl opacity-80 dark:opacity-60"
           animate={{
             y: [0, 30, 0],
             rotate: [0, -15, 15, 0]
@@ -369,7 +327,7 @@ const HeroSection = () => {
         </motion.div>
 
         <motion.div
-          className="hidden lg:block absolute bottom-40 left-1/4 text-3xl"
+          className="hidden lg:block absolute bottom-40 left-1/4 text-3xl opacity-80 dark:opacity-60"
           animate={{
             x: [0, 20, 0],
             rotate: [0, 360, 0]

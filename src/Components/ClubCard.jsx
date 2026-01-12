@@ -54,7 +54,7 @@ const ClubCard = ({ club }) => {
 
                 {/* Description */}
                 <motion.p 
-                    className="text-gray-600 line-clamp-2 mb-4"
+                    className="dark:text-gray-300 line-clamp-2 mb-4"
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ delay: 0.2 }}
